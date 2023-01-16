@@ -1,0 +1,353 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      .button {
+        background-color: #FFFFFF; /* Green */
+        border: none;
+        color: black;
+        padding: 3px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      
+      .button1 {font-size: 10px;}
+      .button2 {font-size: 12px;}
+      .button3 {font-size: 16px;}
+      .button4 {font-size: 20px;}
+      .button5 {font-size: 24px;}
+      </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/ahmad4185/image/upload/v1647458461/transdata_dmyckj.jpg">
+    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+    <link rel="canonical" href="https://codepen.io/ramilulu/pen/mrNoXw">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet"  class="INLINE_PEN_STYLESHEET_ID" href="/static/admin/css/chat.css">
+
+    <!-- <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-d8236034cc3508e70b0763f2575a8bb5850f9aea541206ce56704c013047d712.js"></script> -->
+    <!-- <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script> -->
+    <!-- <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script> -->
+    
+    
+    <title>Healthbot - an AI Chatbot by Transdata Inc.</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/admin/css/cover_orange.css" rel="stylesheet">
+   
+    
+  </head>
+  
+
+
+  <body class="text-center">
+
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand " >Healthbot</h3>
+          <br>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="details">Chat History & Summary</a>
+             <a class="nav-link" href="/product_description">Product Description Generator</a> 
+             <a class="nav-link" href="/logout">Log Out</a>
+            <!-- <a class="nav-link" href="{{comapny_website}}">Create Jobs</a> -->
+          </nav>
+          <!-- <button class="button button5" onclick="getLocation()">Click to set location</button> -->
+        </div>
+        
+      </header>
+
+    
+      <div>
+        <section class="avenue-messenger">
+        <div class="menu">
+            <div class="items"><span>
+                <a href="#" title="Minimize">&mdash;</a><br>
+                <!--     
+            <a href="">enter email</a><br>
+            <a href="">email transcript</a><br>-->
+                <a href="#" title="End Chat">&#10005;</a>
+    
+            </span></div>
+            <div class="button">...</div>
+        </div>
+        <div class="agent-face">
+            <div class="half">
+            <img class="agent circle" src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" alt="ChatBot">
+            </div>
+        </div>
+        <div class="chat">
+            <div class="chat-title">
+            <h1>Healthbot</h1>
+            <h2>By Transdata Inc.</h2>
+            <!-- <figure class="avatar">
+            <img src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" /></figure> -->
+            </div>
+            <div class="messages">
+            <div class="messages-content"></div>
+            </div>
+            <div class="message-box">
+            <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+            {% csrf_token %}
+            <button type="submit" class="message-submit">Send</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+
+
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <!-- <div class="inner">
+          <p>Visit our website <a href="{{company_website}}">{{company_name}}</a> </p>
+        </div> -->
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+   
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script>
+
+      async function postData(url_address, data_to_be_posted){
+        const response = await fetch(url_address, {method:"POST", body:data_to_be_posted});
+        return response.json();
+    }
+    
+    function postToServer(message){
+    
+    
+    
+      let formData = new FormData();
+      formData.append('message', message);
+      formData.append('lastBotMessage', bot_message);
+      formData.append('csrfmiddlewaretoken', '{{ csrf_token }}'); 
+      var fields = window.location.href.split('/');
+      var url_address = "/chatbot/send_response";
+    
+      postData(url_address, formData)
+          .then(data => {
+            bot_message = data.output;
+            bot_voice = data.voice;
+            setTimeout(function() {
+              fakeGivenMessage(bot_message, bot_voice);
+            }, 500 + (Math.random() * 20) * 100);
+           
+
+          });
+        }
+      
+      var user_message = "";
+      var bot_message = "Hi! "+"{{user_name}}"+"! I am your health assistant Healthbot. I hope you are doing well.";
+    
+      
+      
+      
+      
+      
+          
+      
+    var $messages = $('.messages-content'),
+        d, h, m,
+        i = 0;
+    
+        
+    $(window).load(function() {
+      $messages.mCustomScrollbar();
+      setTimeout(function() {
+        fakeMessage();
+      }, 1000);
+
+
+      if ("{{location_set}}" == "False"){
+      setTimeout(function() {
+        fakeGivenMessage(" Please allow location services for better navigation to nearest healthcare centers. Thank you!");
+      }, 2000);
+    }
+    
+    });
+    
+    
+    function updateScrollbar() {
+      $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+        scrollInertia: 10,
+        timeout: 0
+      });
+    }
+    
+    
+    
+    
+    function setDate(){
+      d = new Date()
+      if (m != d.getMinutes()) {
+        m = d.getMinutes();
+        $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+        $('<div class="checkmark-sent-delivered">&check;</div>').appendTo($('.message:last'));
+        $('<div class="checkmark-read">&check;</div>').appendTo($('.message:last'));
+      }
+    }
+    
+    function insertMessage() {
+      msg = $('.message-input').val();
+      user_message = msg;
+      if ($.trim(msg) == '') {
+        return false;
+      }
+      user_message = msg;
+      $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
+      setDate();
+      $('.message-input').val(null);
+      updateScrollbar();
+      postToServer(user_message);
+      
+    }
+    
+    $('.message-submit').click(function() {
+      insertMessage();
+    });
+    
+    $(window).on('keydown', function(e) {
+      if (e.which == 13) {
+        insertMessage();
+        
+        return false;
+      }
+    })
+    
+    
+    async function fakeMessage() {
+      if ($('.message-input').val() != '') {
+        return false;
+      }
+      $('<div class="message loading new"><figure class="avatar"><img src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+      updateScrollbar();
+    
+      setTimeout(function() {
+        $('.message.loading').remove();
+        $('<div class="message new"><figure class="avatar"><img src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" /></figure>' + bot_message + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        setDate();
+        updateScrollbar();
+        i++;
+      }, 1000 + (Math.random() * 20) * 100);
+    
+    }
+
+    async function fakeGivenMessage(given_message, bot_voice) {
+      if ($('.message-input').val() != '') {
+        return false;
+      }
+      $('<div class="message loading new"><figure class="avatar"><img src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+      updateScrollbar();
+    
+      setTimeout(function() {
+        $('.message.loading').remove();
+        $('<div class="message new"><figure class="avatar"><img src="https://res.cloudinary.com/ahmad4185/image/upload/v1647540464/chatbot_oxqzlr.jpg" /></figure>' + given_message + '</div>').appendTo($('.mCSB_container')).addClass('new');
+        setDate();
+        updateScrollbar();
+        i++;
+        playSpecificSound(bot_voice);
+      }, 1000 + (Math.random() * 20) * 100);
+      
+    }
+    
+     $('.button').click(function(){
+      $('.menu .items span').toggleClass('active');
+       $('.menu .button').toggleClass('active');
+    }); 
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+        //showPosition(); //For testing services in the dev mode only
+      } else { 
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    
+    function showPosition(position) {
+     
+      let formData = new FormData();
+      formData.append('latitude', position.coords.latitude);
+      formData.append('longitude', position.coords.longitude);
+      //formData.append('latitude', 35.239742);
+      //formData.append('longitude', 75.32432); //For testing services in the dev mode only
+      formData.append('csrfmiddlewaretoken', '{{ csrf_token }}'); 
+      var fields = window.location.href.split('/');
+      var url_address = "/chatbot/set_location";
+    
+      postData(url_address, formData)
+          .then(data => {
+            if (data.longitude == false || data.latitude == false){
+              alert("Location data has been saved in the cookies!");
+            }
+            else{
+              console.log(data.latitude+", "+data.longitude);
+            }
+           
+          });
+    }
+
+    function playSpecificSound(signal) {
+      var main_url = window.location.href.split('chatbot/');
+      var notification = new Audio(main_url[0] + "static/" + signal);
+      notification.play();
+  
+  }
+  
+    
+    
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          alert("User denied the request for Geolocation. Please go to your privacy settings and allow Location Servivces");
+          break;
+        case error.POSITION_UNAVAILABLE:
+          alert("Location information is unavailable.");
+          break;
+        case error.TIMEOUT:
+          alert("The request to get user location timed out.");
+          break;
+        case error.UNKNOWN_ERROR:
+          alert("An unknown error occurred.");
+          break;
+      }
+    }
+
+    getLocation();
+    
+    </script>
+
+  </body>
+</html>

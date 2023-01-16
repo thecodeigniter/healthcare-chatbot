@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.84.0">
+        <link rel="icon" href="https://res.cloudinary.com/ahmad4185/image/upload/v1647458461/transdata_dmyckj.jpg" type="image/gif" sizes="16x16">
+        <title>AI App Testing Dashboard</title>
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Favicons -->
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="/static/admin/css/cover_orange.css" rel="stylesheet">
+    </head>
+  <body class="text-center">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            
+            <header class="masthead mb-auto">
+                <div class="inner">
+                  <h3 class="masthead-brand " >Product Description Generator</h3>
+                  <br>
+                  <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/chatbot">Chatbot Testing</a>
+                     <a class="nav-link" href="/logout">Log Out</a>
+                    <!-- <a class="nav-link" href="{{comapny_website}}">Create Jobs</a> -->
+                  </nav>
+                </div>
+              </header>
+              
+            <main class="px-3">
+
+                    <h3><b>Generate SEO Optimized Product Description</b></h3>
+
+                <br>
+
+                <h5><b>Select Shoe Material</b></h5>
+                    
+                <div class="row g-3">                    
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "upper" placeholder="Upper material"
+                        aria-label="Upper material" style="font-size:13px;">
+                    </div>
+                    
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "lining" placeholder="Lining material"
+                        aria-label="Lining material" style="font-size:13px;">
+                    </div>
+
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "sole" placeholder="Sole material"
+                        aria-label="Sole material" style="font-size:13px;">
+                    </div>
+   
+                </div>  <!-- end row -->
+
+                <br>
+
+                <div class="row g-4">                    
+                    
+                    
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "fastening" placeholder="Fastening type"
+                        aria-label="Fasterning Type" style="font-size:13px;">
+                    </div>
+
+
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "trims" placeholder="Trims"
+                        aria-label="Trims" style="font-size:13px;">
+                    </div>
+
+                    <div class="col">
+                        <input type="text" class="form-control"
+                         id = "leg" placeholder="Leg height"
+                        aria-label="leg" style="font-size:13px;">
+                    </div>
+
+                    <div class="col form-check form-switch">
+                      
+                        <label class="form-check-label" for="insole">Removable Insole</label>
+                        <input class="form-check-input" type="checkbox" id="insole">
+                      </div>
+   
+                </div>  <!-- end row -->
+                <br>
+
+                
+                <div>
+                    {% csrf_token %}
+                    <a class="btn btn-lg btn-secondary" style="font-size:15px;" onclick="generateDescription()">Generate</a>
+                </div>
+
+                <h5 id="generated"> </h5>
+
+               
+            </main>
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                  <p>Visit our website <a href="{{company_website}}">{{company_name}}</a> </p>
+                </div>
+              </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script> src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.0/async.min.js"</script>
+        <script>
+            async function postData(url_address, data_to_be_posted) {
+                const response = await fetch(url_address, {
+                    method: "POST",
+                    body: data_to_be_posted
+                });
+                return response.json();
+            }
+
+            function generateDescription() {
+                var upper= document.getElementById("upper");
+                var lining= document.getElementById("lining");
+                var sole= document.getElementById("sole");
+                var fastening= document.getElementById("fastening");
+                var trims= document.getElementById("trims");
+                var leg= document.getElementById("leg");
+                const insole = document.querySelector('#insole');
+                
+
+
+                let formData = new FormData();
+               
+                formData.append('upper', upper.value);
+                formData.append('lining', lining.value);
+                formData.append('sole', sole.value);
+                formData.append('fastening', fastening.value);
+                formData.append('trims', trims.value);
+                formData.append('leg', leg.value);
+                formData.append('insole', insole.checked);
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                var generated= document.getElementById("generated");
+
+
+
+                
+            
+                var url_address = "/product_description/generate"
+                alert("Product Generation in the process. Please wait...");
+                generated.innerHTML = "AI Bot is generating your new description. Please wait...";
+                postData(url_address, formData).then(data => {
+                    if (data.status){
+                    
+                    generated.innerHTML = data.message;
+                    }
+                    else{
+                        alert("Some error occured. Please report it to the administrator");
+                    }
+                });
+                
+                
+            }
+
+            
+
+        </script>
+    </body>
+</html>
